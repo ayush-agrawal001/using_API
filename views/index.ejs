@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body class="default">
+    <div class="container">
+        <form action="/" method="post">
+            <h1>Types</h1>
+            <input type="radio" id="success" name="type" value="success">
+            <label for="success">Success</label><br>
+            <input type="radio" id="love" name="type" value="love">
+            <label for="love">Love</label><br>
+            <input type="radio" id="attitude" name="type" value="attitude">
+            <label for="attitude">Attitude</label><br>
+            <input type="radio" id="positive" name="type" value="positive">
+            <label for="positive">Positive</label><br>
+            <input type="radio" id="motivational" name="type" value="motivational">
+            <label for="motivational">Motivational</label><br>
+            
+            <input type="submit" value="Submit">
+            <select name="num_quotes" id="num_quotes">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <input type="hidden" name="dropvalue" id="dropvalue" value="1">
+        </form>
+
+        <select id="theme-selector">
+            <option value="default">Default Theme</option>
+            <option value="theme-1">Theme 1</option>
+            <option value="theme-2">Theme 2</option>
+            <option value="theme-3">Theme 3</option>
+            <option value="theme-4">Theme 4</option>
+        </select>
+        
+        <div id="q_see">
+        <% if (getexecuted) { %>
+            <div id="type" class="q_div"><%= rquotes.type %></div>
+            <div id="quote" class="q_div"><%= rquotes.quote %></div>
+        <% } else { %>
+            <% squotes.forEach((squote) => { %>
+                <div id="type" class="q_div"><%= squote.type %> </div>
+                <div id="quote" class="q_div"><%= squote.quote %> </div>
+            <% }); %>
+        <% } %>
+        </div>
+    </div>
+
+    <script>
+        // to select the drop value
+        var dropdown = document.getElementById("num_quotes")
+        var selectdrop = document.getElementById("dropvalue")
+        dropdown.addEventListener("change", (event) => {
+            var drop_value = dropdown.value
+            selectdrop.value = drop_value
+        })
+
+        // for theme
+        var body = document.body
+        // var body_bg_img = window.getComputedStyle(body).background-image
+        var themeSelector = document.getElementById("theme-selector");
+        themeSelector.addEventListener("change", function() {
+            console.log(this.value)
+            document.body.classList.toggle(this.value)
+        });
+    </script>
+</body>
+</html>
