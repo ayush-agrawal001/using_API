@@ -72,7 +72,7 @@ using_API/
 ├── package.json
 ├── package-lock.json
 └── index.js
-
+```
 - **public/**: Contains static assets such as CSS files.
 - **views/**: Contains EJS templates.
 - **.gitignore**: Specifies files to be ignored by Git.
